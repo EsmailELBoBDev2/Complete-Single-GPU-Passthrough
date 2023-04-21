@@ -7,7 +7,8 @@
 * **[Keyboard/Mouse Passthrough](#keyboardmouse-passthrough)**
 * **[Video Card Virtualisation Detection](#video-card-driver-virtualisation-detection)**
 * **[Audio Passthrough](#audio-passthrough)**
-
+* **[Vendor reset](#vendor-rest)**
+* **[How to start without hooks](#start-withouthooks)**
 ### **Enable & Verify IOMMU**
 ***BIOS Settings*** \
 Enable ***Intel VT-d*** or ***AMD-Vi*** and disabled ***CSM*** support in BIOS settings. If these options are not present, it is likely that your hardware does not support IOMMU.
@@ -192,6 +193,11 @@ virsh edit win10
 </tr>
 </table>
 
+### [**Vendor reset**](#vendor-rest)
+If you face problmes (like blank screen) after starting the vm, try to this: https://github.com/gnif/vendor-reset and do not forget to look at: https://github.com/gnif/vendor-reset/issues/46#issuecomment-992282166
+
+### **How to start without script hooks**
+You will log out of your current X11 or wayland session then in TTY type `sudo virsh start 'vm name'` **vm name** will be **win10** for example.
 
 ### **See Also**
 > [Single GPU Passthrough Troubleshooting](https://docs.google.com/document/d/17Wh9_5HPqAx8HHk-p2bGlR0E-65TplkG18jvM98I7V8)<br/>
