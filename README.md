@@ -7,7 +7,6 @@
 * **[Keyboard/Mouse Passthrough](#keyboardmouse-passthrough)**
 * **[Video Card Virtualisation Detection](#video-card-driver-virtualisation-detection)**
 * **[Audio Passthrough](#audio-passthrough)**
-* **[Vendor reset](#vendor-rest)**
 * **[How to start without hooks](#start-withouthooks)**
 ### **Enable & Verify IOMMU**
 ***BIOS Settings*** \
@@ -123,7 +122,7 @@ For ***SATA*** disk of VM, set ***Disk Bus*** to ***virtio***. \
 In ***NIC*** section, set ***Device Model*** to ***virtio*** \
 Add Hardware > CDROM: virtio-win.iso \
 Now, ***Begin Installation***. Windows can't detect the ***virtio disk***, so you need to ***Load Driver*** and select ***virtio-iso/amd64/win10*** when prompted. \
-After successful installation of Windows, install virtio drivers from virtio CDROM. You can then remove virtio iso.
+After successful installation of Windows, install virtio drivers from virtio CDROM and ***device drivers***. You can then remove virtio iso.
 
 ### **Attaching PCI devices**
 Remove Channel Spice, Display Spice, Video QXL, Sound ich* and other unnecessary devices. \
@@ -192,9 +191,6 @@ virsh edit win10
 </td>
 </tr>
 </table>
-
-### [**Vendor reset**](#vendor-rest)
-If you face problmes (like blank screen) after starting the vm, try to this: https://github.com/gnif/vendor-reset and do not forget to look at: https://github.com/gnif/vendor-reset/issues/46#issuecomment-992282166
 
 ### **How to start without script hooks**
 You will log out of your current X11 or wayland session then in TTY type `sudo virsh start 'vm name'` **vm name** will be **win10** for example.
