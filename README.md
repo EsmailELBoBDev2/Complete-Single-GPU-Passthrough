@@ -132,17 +132,7 @@ Now, click on ***Add Hardware***, select ***PCI Devices*** and add the PCI Host 
 In order to be able to use keyboard/mouse in the VM as hardware via PCI devices. Go to vm settgins then click on add hardware and then check PCI and click on USB Host controller (or something similar). 
 
 ### **Audio Passthrough**
-To passthrough add it's hardware, so open virt-manager settings then go to add hardware then go to PCI devices and choose the HD audio Controller (or something similar) and add it and all of it's IOMMU group (you can check the group via):
-```sh
-#!/bin/bash
-shopt -s nullglob
-for g in `find /sys/kernel/iommu_groups/* -maxdepth 0 -type d | sort -V`; do
-    echo "IOMMU Group ${g##*/}:"
-    for d in $g/devices/*; do
-        echo -e "\t$(lspci -nns ${d##*/})"
-    done;
-done;
-```
+To passthrough add it's hardware, so open virt-manager settings then go to add hardware then go to PCI devices and choose the HD audio Controller (or something similar) and add it and all of it's IOMMU group.
 
 
 ### **Video card driver virtualisation detection**
